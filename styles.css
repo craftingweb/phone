@@ -1,0 +1,676 @@
+/*
+1. 90% of designers use Figma, Photoshop is outdated
+
+2. Figma navigation Ctrl or Cmd and scroll --- zoom in / out
+                    Space and click mouse  --- move object
+                    Inspect tab we need to --- check objects
+                    Shift and R --- red lines (width of content for human optimal eye looking at it)
+                    Cmd + click --- select object;; in layers object can consist of many layers so your select parent, then go to design tab and export it (save)
+3. ! or doc and Tab 
+
+4. Auto Save on change Focus might be the same as on change Window
+
+5. <header> tag --- used for header menu and logo
+
+6. !! for each tag it is good practise to put class, so it is like a name for each tag: !! header.header
+
+7. div is most widely used standart tag. It takes whole width and syntax of it: .name of div
+.container we need to confine elements inside of this container
+
+8. logo is always is a link to home page. But if it is on the first page so then it is no need to put link to home page.  Delete href part from <a>, give name and put inside <img> with image name <a class="logo"><img src="images/logo.jpg" alt="" class="logo-img"></a>
+
+9. menu's navigation has own tag <nav> with name nav; it is better for seo; nav is the same thing as div, header, 
+Google's robots can not look at page like humans and see where it is header and wher it is image or paragraph. So in order robots can understand what's in the page we use all this descriptive tags
+
+10. <a href="tel:123-456-7890">123-456-7890</a> Use <a> for phone numbers that allows to call on mobile devices just by pressing on that phone number.
+
+11. rgb(255, 56, 134) color will be more red, if second is greater then it will be more green, same with hex #ff88aa;
+
+12. almost all tags give class="name" it is easy to work with them <header class="header">
+
+13. !!! max-width it can be any size up to that max-width:1200px. So if it will be on mobile devices it will shrink and rejust for example to :600px, unlike if use width: 1200px it will be 1200px on mobile device and won't see the end of it unless scroll bottom scroll.
+
+14. margin: 0 auto; make content in the middle, it does not matter what size of device it always in the middle, more visual to see result apply max-width: 1200px to same element. If not apply width: property to same element you do not see effect. Auto means pushing from left and right, that is why it is getting in the middle.
+
+15. padding: 0 15px; we making to create space between edge of screen and content, without it content will be on edge of screen, which is not a good thing.
+- padding creates INNER space/indent (it can increase size of element, for example padding-top: 150px it will make 150 px to top of same element, it will apply same properties that has been applied to same element)
+- marging creates OUTTER space;; !!! key difference that marging does not change size of element unlike padding; margin only creates indent to an ellement 
+
+-- Creating height of header, because we do not specify height; to make it larger we use padding for any element in header (like logo) and in figma inspect distance to top and bottom:
+.logo {
+  padding: 33px 0 32px;
+}
+
+16. padding: 15px; we have to wright 15px together, otherwise 15 px won't work.
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px; not 15 px
+
+17 in css properties always put (;) padding: 15px;
+
+18 before (in a dark age) used table to design webpage, no with adaptive (mobile friendly) you can not do this, that is why started show up properties like: flow, flex...
+
+19. display: flex; it is applying to parent only element <nav> and all elements inside will follow new order;  before this in navigation menu items lists then below was logo then below phone (vertically located), when we apply this property now they located to the right of each ather (horizontaly) and now we can located them apart from each other: menu to the left; logo in center; phone to the right.
+
+20. justify-content: space-between; creates equal space between elements horizontaly; if 2 elements it will located them on both ends, if 3 it put one in the middle and oters on ends  work after display: flex; because it makes them horizontaly 
+
+21 align-items: center; - make elements located on one level (horizontaly)
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+22. For list items: they located one under another;; to located them horizontally use same as above: display:flex;
+
+23. There block elements, they taking entire with despite if it is only 3 charachters used. 
+
+24. It is good practise not specify height because height adjust automatically.
+
+25. To create space between list elements in menu we select that element and \\ padding-rigth: 30px; What's New?
+      Color     Order
+
+26. normalize.css
+
+27. for all links apply || text-decoration: none; to remove underline
+
+28. color: inherit; inheit property from parent, if not go to grandfather if none go grand grandfather and body{has default color black}. For example if links inside header and they all the same color, we apply color to header and links inherit that color.
+
+29. jpg vs svg vs png; jpg is not transparent unlike svg and png; svg is mostly for logos it is transparent and light weight, it is not pixels but mathematic code (when zoom in it is still in an excelent quality, so standart to use .svg for logos). If i put logo.jpg it won't be transparent so must use svg or .png is also transparent (but has downside it can be 5-10 bigger size then .jpg) Figma->Design->Export
+
+30. list <ul> by default has underlying to get rid of use|| list-style: none;
+it also has margin and padding and we zero out.
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+31. with line-height: 1.9 0.7 2.4; we create space below lines. For example 1.2 will increase space from text, when select text it is a space from text to egde of blue (highligted area)
+
+32. google fonts; paste before normalize; This is will be out main font whole SPA therefore we apply to body and when we need to change like to make bold we apply that to that specific element. Aslo copy name of this font from google: font-family
+body {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 400px;
+}
+
+33. In header there is menu & phone and they both have same properties. Instead of writing properties to each one we just put comma (,) after first selector and put another class and apply properties.
+.menu-item, .phone {
+  font-size: 24px;
+  line-height: 29px;
+}
+
+34. Another way just apply them to header and children will inherite them. There are some properties that won't inherite for example: padding. Just imagine if you apply to a header and all children will inherite. It will be big spaces.
+
+35. <main class="main"></main> Inside main tag locates information that won't be repeated in other pages; unlike in header, footer in all pages will be the same information like logo, menu, phone.
+
+36. Inside of this <main> will be many components like images with descriptions (about iphone), other component will consist of different colors of ipnone (4 images of iphone) and other components and those components call section:
+<main class="main">
+      <section class="headline"></section>
+</main>
+
+37. adding .container in section to apply same properties
+  <section class="headline">
+    <div class="container">
+      <h1 class="title">IPHONE 14 PRO</h1>
+    </div>
+   </section>
+
+38. If it looks like a button, it might be not a button. It can be a link. This link will scroll to bottom of a page where we can select our phone : <a class="headline-btn" href="#">SELECT</a>
+
+39. text-align: center -> won't work for 2 or more inline elements (like img , a) because they are will be in same line but in center; it work for block elements, or 1 block and 1 inline, they will work one below another in the center.
+
+40. There is a rule: that to make space between content we use margin-bottom: px; or margin: 0 0 40px; if we need to get rid automatic margin on top.
+
+41. In order to apply inline element (like to link a) property of block. We transform inline into block\\ display: inline-block;
+
+42. For button (<a>) choose background-color: and for text just color:
+
+43. Above just text to create button shape we use padding to increase it's size.
+
+44. Centring. In header we have: menu, logo, phone. After we creating space of each in menu: .menu-item {padding-right: 30px; it will create extra space after far most element, therefore, logo won't be at the center because of it. In order to get rid of it using magic: for .menu and .phone we add following: {flex-grow: 1; flex-basis: 0;} then apply to .phone: text-align: right;
+
+45. To locate: text on the left side and image on a right of it we create <div> and inside of it div for text and img. for shell we apply display: flex;
+
+46. In a outter (shell) <section class="new"> we apply distance to upper element and distance to bottom element]]
+.new {padding: 90px 0 150px;}
+
+47. In order to not apply for whole tag property for example to <p> we apply to div where this p is located--
+.new-text p{} it means it only will apply to p inside .new-text not any other p 
+
+48. In Developer tool - When you inspect element properties and you can click it there it will create new empty property and you can tweak it and see live changes.
+
+49. To locate image on a right of text. I applied padding for all sides (it did not work). He applied for outter (both text and image) align-items: center and then only for image applied margin-left: 191px.
+
+50. When few items (like images) in a row use list. ul>li*4;
+
+51. Saving and naming something if we need to use similar name we left click it on it and then minor edit it.
+
+52. When Zen coding we can add class to it; instead of ul>li*4 we can ul.color-list>li.color-item*4;
+
+53. When we made mistake in Zen coding we can undo Cmd Z;; It will return back to edit it.
+
+54. In Zen coding we can add attribute in square brackets []
+ul.cas>li.dfdf>img[src="images/phone.jpg"]
+
+55. In Zen coding we can add element by (+) ul>li+h2+p
+
+56. In Zen coding we can add text in curly braces {dfsfs} ul>li+h2{dfdfdfd}
+
+57 In Zen coding ul>li+h2{dfdfdfd} when you press Tab and nothing changes, delete last symbol (}) and it will show hint underneeth and then press Tab
+
+58 In Zen coding we can use $ when will be more than one element in ascending order 1,2,3,4 h$*3{Heading $}
+
+59 There is huge amount of nuances how to do something in html/css. People get paid for this. So do not beat yourself up that you do not understand something. Slowly, step by step you will learn all the tricks.  
+
+60 Double left click on word it will highlight it then we copy it by Ctrl C and Ctrl V, instead of selecting word from begining and moving to the end of word in order to highlight.
+
+61. wrapper class name used for outter shell and inner class name used for inside shell.
+
+62. How to create input with underline: <input>            2. to remove border around input use  border: none;        3. to create underline use# border-bottom: 1px solid #fff
+4. to create distance btw placeholder & underline use  padding: 10px, 0;
+5. if there are several inputs apply   display: block;     6. to fit all length apply   width: 100% ;; 
+7. to create space btw inputs  margin-bottom: 20px;  not padding-bottom because padding apply to same element and it will make it larger unlike margin make space between objects.
+8. to make same color as whole form we apply   background-color: and same color as form or any color y want.
+
+63. to apply style to placeholder, there is special syntax: we chose element where placeholder is located then :: and placeholder;; .contacts-input::placeholder { Pretty cool to apply opacity: 0.5; but first have to indicate color: #fff;
+Input & placeholder not inherit properties from parent so we have to specify. 
+
+64. I thought always apply margin bottom as a distance to element below, but it is not always, example <input> below <p> he apply to form class then p .contacts-form p { and then margin: 30px 0;
+
+65. button is inline element and text-align: center; won't work. We have to apply text-align: center; to parent then it will work
+
+66. cursor: pointer; it will show cursor as hand when hover over button; apply to bottom.
+
+67. footer.footer - located at the bottom of the page and inside of it located: social media, copy right, policy, contc
+
+68. header/footer background color takes all the way till edge of the screen and when you put inside of them .container it will align items based on containers properties.
+
+------------------------- ADAPTIVE (resposive)
+
+69. <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+here meta tag viewport use to make adaptive (responsive)
+here  content="width=device-width, - tell browser what should be the width, here is says width should be equal width of device, back in the day they put size like 1024 by 1024
+Browser once installed it knows its width.
+
+70. Adaptive (responsive) is just redifining of already applied CSS properties to your project, starts with @media
+@media (max-width: 1000px){
+and inside curly braces we will address tags, what they should do when width will be smaller than width that we specified
+}
+
+71. max-width: 1000px means property will apply when width will be smaller than width we specified <1000px
+min-width: 1000px means will apply when widht >1000px
+
+72. Responsive has to be done by sections, so we comment out whole but section that we want to work. Once we done make it responsive, we un comment the other section and not commenting out section that we just worked. So we have open 1 section and 2 section. Keep same way till the end.
+
+73. Bottom scroll is worst thing that can happen when working with responsive.
+
+74. Inside media apply value in % to max-width and it will adjust to the size of device.
+
+75. Copy same @ media but for smaller size (probably for iPads) @media (max-width: 560px) {}
+
+76. In @media query only write that part that we redefine, for example if we changing size of <h1> and not duplicate same code from regular styling
+
+77. @media query must be below regular properties/styling 
+.header{width: 440px}
+@media{.header{width: 100%)
+
+78. Then open developer tools, getting to size of width (for example 500px) and see visually what you want to change. To select element you press button with arrow - to select element and in properties you manually change values. For example for header before font-size was 77, now you put 34px and copy same properties from console to your media query. By coping whole class from console to VS code and there remove properties that won't change, that will be no dublication.
+
+79. If you have already markup for mobile version, you do not need to do above step.
+
+80. There is standart that we do not do responsive design for the size below <320px.
+
+81. After we finish working with 1 section we uncomment 2 section but not comment out 1 section and once done with this section we un comment next section
+
+82. Locate media query by size from larger to smaller: @media (max-width: 1200px), then 940px, then 560px.
+
+83. To remove something at certain size we apply # display: none; @media (max-width: 940px) {.images-new {display: none;}
+(because something will take a lot of space in responsive) 
+
+84. Once we removed something (like image) we have to fill that space. So for text (not for outer div) apply .new-text p,{max-width: 100%;} it will take whole space end to end.
+
+85. Originally we define 3 breaks points 1200, 960, 540 it is not set on a stone we can add more breakpoints, because if we wait till 960 for 4 images, they will be one on top of other, so we create new breakpoint (at which they still look fine) @media (max-width: 1100px) and start applying properties.
+
+86. To dynamicallly work with design we open console, then styles and ther + button it creates new style and we can apply styles there and same time see changes on design, then copy that new style to VC
+
+87. If we have 4 images in a row and when we recise to smaller screen we want to display 2 images per row. For this we have to apply for each image (in our case for each <li> width: 50% And we also must to apply for parent that holds list for ul property flex-wrap: wrap; So that parent will allow children to locate 2 on each row and you have to specify which media end point have to apply. 
+
+88. li.color-item {width: 50%; for example image taking 50% of the screen when width @media (max-width: 1100px) and then apply li.color-item {width: 100%; when width @media (max-width: 560px) it will 1 per row. 
+
+89. In order to visually to see changes on element we first click on element and then click inside of it's property and we can apply our property and it will show real time changes.
+
+90. if we applied to element display: flex in console-styles we come to same property and next to it there is square once we click there there properties that we can see real times changes like flex-direction, align-items, justify-content so we can see how it will look like.
+
+91. when we have 2 objects like text on the left and image on the right (earlier it was applied to their parent display: flex) and on responsive we apply display:block to located them one below another.
+
+92. when we defined early break point 560 and applied font-size and line-height and now if we working with another section and want to apply same property for font that being applied to previous section we add just add class name there @media (max-width: 560px) { .new-title, .color-title, .contacts-title {font-size: 28px; line-height: 32px;}
+
+93. in console once we select element it shows in styles element.styles{} inside of it we can apply our properties and see how it will effect our element and then copy changes.
+
+94. if there is white color space between edge of screen and our element we can apply background-color: color;
+
+95. in console when selecting element and its property, we click on it is value and then we just use keyboard up & down key to dynamically see changes in browser.
+
+96 to be consistent with spacings (padding) to have same distance between elements we create extra endpoint media @768 and here we will be decreasing distances. Goal is to have same spacing everywhere @media (max-width: 768px) {.headline, .new {padding: 50px 0 30px;} .color {padding-bottom: 50px;} .contacts-form {padding: 50px 70px;}
+
+97. This @media (max-width: 1240px) call break point. Those break points not just standard for mac around 1500px for laptop 1240px ipads 900px and cell phone 560px. We can create for any our needs, for example just for <footer> @media (max-width: 640px)
+
+98. To locate at center, when we have parent div, display: flex and inside divs, <a>, it won't work if we change to display: block so we have to use .footer-nav {flex-direction: column;} Probably flex-direction: column; locate them as div (block) for a whole row each   but we also have to apply align-items: center;
+By default flex-direction: row; (horizontaly), we also can do flex-direction: column-reverse; it display bottom element to top. 
+
+99. We can do something that is not existing/displaying at desktop version by display: none; to any element like .menu-btn and then for display on mobile for curtain media @960 .menu-btn {display:inlineblock; instead of :block because it will take entire line.
+
+100. Css property order: 1; can change order of flex's elements. Flex elements are elements that their parent has display: flex;
+
+101.  Position: absolute; is outlaw. It does not depend on any html laws. It disregard any paddings, margins, etc. Its like outside of html (like a shell) therefore we can put it anywhere in our page with the help of positions:left,right,top,bottom. Those direction only works with position property. : left: 343px, right 23px, top 0ps, bottom 23px;
+.menu {position: absolute;right: 10px;top: 500px;}
+
+
+102. If several elements has a same class and they all located at the same parent we can select it and apply property to it by :nth-child() and we need put number of the child that we referring in paranthesis. For example .btn-line:nth-child(1) {} btn-line:nth-child(2) {}
+
+103. CSS connected to HTML with the help of tag <Link> for example <Link rel="stylesheet" href="css/style.css"> When we need attach .js we do not use <Link> but tag <script> and all the way at the bottom before closing </body> Example <script src="js/main.js"></script> Not not href like in css but src. Another not it is not selfclosing tag script, unlike Link. Because if we put js on top, when loading .js it take longer time to load and once loading it stop rendering html element until it finish loading .js Based on statistics if loading more than 1 sec it tend users to leave page.
+
+104. In JS adding/removing class to an element: const btn = document.querySelector(".menu-btn"); const nav = document.querySelector(".nav");
+btn.addEventListener("click", () => {
+  nav.classList.toggle("menu-open");}); 
+
+105. To cover entire page we use   .menu {position: absolute;
+left: 0;top: 0;right: 0;bottom: 0;background-color: #111;}
+
+106. z-index(); inside paransethis any number from 0-9999 (it is how many layers in this z-index) This need to locate one above another. For example when we apply background color for whole screen black but with the help of this z-index() to specific element, it will be shown on top of black screen.
+
+*/
+
+.footer-logo {
+  padding: 30px 0;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contacts-btn {
+  text-transform: uppercase;
+  width: 240px;
+  height: 50px;
+  border-radius: 30px;
+  font-size: 14px;
+  line-height: 130%;
+  color: #490e84;
+  font-weight: 700;
+  background-color: #fff;
+  letter-spacing: 6px;
+  bottom: none;
+  cursor: pointer;
+}
+
+.contacts-form p {
+  opacity: 0.5;
+
+  margin: 30px 0;
+  text-align: center;
+}
+
+.contacts-input::placeholder {
+  font-weight: 14px;
+  line-height: 18px;
+  color: #fff;
+  opacity: 0.5;
+  font-family: "Inter", sans-serif;
+  font-weight: 400px;
+}
+
+.contacts-input {
+  padding: 10px 0;
+  border: none;
+  border-bottom: 1px solid #fff;
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+  background-color: #574b63;
+}
+
+.contacts-title {
+  margin: 0 0 60px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 39px;
+}
+
+.contacts-form {
+  width: 100%;
+  padding: 140px 65px;
+  background-color: #574b63;
+  text-align: center;
+}
+
+.contacts-inner {
+  display: flex;
+  color: #fff;
+}
+
+.color-item h3 {
+  font-style: 20px;
+  line-height: 26px;
+}
+
+.color-item img {
+  margin-bottom: 10px;
+}
+
+.color-list {
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.color {
+  padding-bottom: 150px;
+}
+
+.images-new {
+  width: 350px;
+  height: 370px;
+  margin-left: 191px;
+}
+
+.new-text p {
+  max-width: 560px;
+  margin: 0 0 30px;
+}
+
+.new-text b {
+  display: block;
+  max-width: 560px;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+.new-info {
+  display: flex;
+  align-items: center;
+}
+
+.new {
+  padding: 90px 0 90px;
+}
+
+.new-title,
+.color-title {
+  margin: 0 0 50px;
+  text-transform: uppercase;
+  text-align: center;
+  color: #717171;
+  font-size: 32px;
+  line-height: 39px;
+  font-weight: 700;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 400px;
+}
+
+.logo {
+  padding: 33px 0 32px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.header,
+.footer {
+  background-color: #0b0b0c;
+  color: #717171;
+  font-size: 24px;
+  line-height: 29px;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu {
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+.phone {
+  flex-grow: 1;
+  flex-basis: 0;
+  text-align: right;
+}
+
+.menu-item {
+  padding-right: 30px;
+}
+
+.headline {
+  background-color: #f5f5f5;
+  text-align: center;
+  padding: 70px 0 40px;
+}
+
+.title {
+  text-transform: uppercase;
+  margin: 0 0 40px;
+  color: #490e84;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 77px;
+}
+
+.headline-img {
+  margin-bottom: 25px;
+}
+
+.headline-btn {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 26px;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #490e84;
+  padding: 20px 120px;
+  border-radius: 30px;
+}
+
+.menu-btn {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  .headline-img {
+    max-width: 100%;
+  }
+  .contacts-inner {
+    display: block;
+  }
+  .contacts-form {
+    width: auto;
+  }
+  .contacts-img {
+    width: 100%;
+  }
+  .contacts {
+    background: #574b63;
+  }
+}
+
+@media (max-width: 1100px) {
+  ul.color-list {
+    flex-wrap: wrap;
+  }
+  li.color-item {
+    width: 50%;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 940px) {
+  .menu-btn {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    order: 1;
+    position: relative;
+    z-index: 50;
+  }
+  .logo,
+  .phone {
+    z-index: 50;
+  }
+
+  .btn-line {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    height: 2px;
+    transition: 1s ease;
+  }
+
+  .btn-line:nth-child(1) {
+    top: 0;
+  }
+  .btn-line:nth-child(2) {
+    top: 20px;
+  }
+  .btn-line:nth-child(3) {
+    top: 20px;
+  }
+  .btn-line:nth-child(4) {
+    top: 40px;
+  }
+  .menu-open .btn-line:nth-child(1) {
+    transform: scaleX(0);
+  }
+  .menu-open .btn-line:nth-child(2) {
+    transform: rotate(45deg);
+  }
+  .menu-open .btn-line:nth-child(3) {
+    transform: rotate(-45deg);
+  }
+  .menu-open .btn-line:nth-child(4) {
+    transform: scaleX(0);
+  }
+  .menu {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transform: translateY(-100%);
+    transition: 0.3s ease;
+  }
+  .menu-open .menu {
+    transform: translateY(0%);
+  }
+  .menu-item {
+    padding: 50px 0;
+    font-size: 45px;
+  }
+
+  .images-new {
+    display: none;
+  }
+  .new-text p,
+  .new-text b {
+    max-width: 100%;
+  }
+
+  .phone {
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .headline,
+  .new {
+    padding: 50px 0 30px;
+  }
+  .color {
+    padding-bottom: 50px;
+  }
+  .contacts-form {
+    padding: 50px 70px;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-nav {
+    flex-direction: column;
+  }
+  .footer-nav a {
+    padding-bottom: 20px;
+  }
+  .footer-nav p {
+    margin: 1px;
+    padding-top: 20px;
+  }
+}
+
+@media (max-width: 560px) {
+  .title {
+    font-size: 34px;
+    line-height: 42px;
+  }
+  .new-title,
+  .color-title,
+  .contacts-title {
+    font-size: 28px;
+    line-height: 32px;
+  }
+  .headline-btn {
+    font-size: 18px;
+    line-height: 22px;
+    padding: 20px 90px;
+  }
+  li.color-item,
+  li.color-item img {
+    width: 100%;
+  }
+  .contacts-form {
+    padding: 50px 35px;
+  }
+}
+
+@media (max-width: 320px) {
+  .contacts-form {
+    padding: 50px 10px;
+  }
+}
